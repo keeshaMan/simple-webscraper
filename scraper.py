@@ -1,6 +1,7 @@
 import requests
 import certifi
 from bs4 import BeautifulSoup
+import csv
 
 def scrape():
     url = 'http://www.example.com'
@@ -14,6 +15,14 @@ def scrape():
     print(title)
     print(text)
     print(link)
+    
+    with open('scraped_data.csv', 'w', newline='', encoding='utf-8') as csvfile:
+        writer = csv.writer(csvfile)
+        
+        writer.writerow(['Titile', 'Text', 'Link'])
 
+        writer.writerow([title,text,link])
+        print("data saved to scraped_data.csv")
+        
 if __name__ == '__main__':
     scrape()
